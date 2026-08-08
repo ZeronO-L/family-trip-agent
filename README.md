@@ -2,7 +2,7 @@
 
 An open-source, local-first Agent Skill designed for family road trips worldwide, with region-dependent source coverage and validation status.
 
-> Status: `0.1.0-alpha.1`, release-candidate preparation. Static checks, deterministic evaluations, global-source smoke evidence, and an independent multi-turn Codex planning and replan test pass. Publication still requires the final clean-export, maintainer-privacy, and GitHub account checks.
+> Status: `0.1.0-alpha.1` is publicly available. Static checks, deterministic evaluations, global-source smoke evidence, independent multi-turn Codex planning and replan tests, and GitHub Actions pass. Codex is runtime-verified; other documented hosts currently have structural compatibility evidence only. Regional coverage varies.
 
 ## Why this project exists
 
