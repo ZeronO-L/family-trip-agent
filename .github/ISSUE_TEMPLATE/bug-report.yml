@@ -1,0 +1,63 @@
+name: Reproducible bug report
+description: Report a reproducible defect using synthetic or fully anonymized data.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a problem. Use a synthetic scenario whenever possible. Never include names, booking references, exact home addresses, active travel dates, live locations, vehicle details, credentials, or screenshots containing private metadata.
+
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      placeholder: v0.1.0-alpha.2
+    validations:
+      required: true
+
+  - type: dropdown
+    id: host
+    attributes:
+      label: AI host
+      options:
+        - Codex
+        - GitHub Copilot
+        - Claude Code
+        - OpenCode
+        - Gemini CLI
+        - Cursor
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Synthetic reproduction
+      description: Provide the smallest safe prompt and steps that reproduce the issue.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: privacy_confirmation
+    attributes:
+      label: Privacy confirmation
+      options:
+        - label: I removed personal data, active-trip details, credentials, booking references, and local file paths.
+          required: true
+        - label: I understand that this issue and its contents will be public.
+          required: true

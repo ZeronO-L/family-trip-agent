@@ -9,7 +9,7 @@
       "name": "family-trip-agent",
       "source": "./",
       "description": "Plan, replan, validate, and learn from executable family road trips.",
-      "version": "0.1.0-alpha.1",
+      "version": "0.1.0-alpha.2",
       "license": "MIT",
       "category": "productivity",
       "tags": ["travel", "family", "road-trip"]

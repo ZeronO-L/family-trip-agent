@@ -1,6 +1,6 @@
 {
   "name": "family-trip-agent",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "description": "Plan, replan, validate, and learn from executable family road trips.",
   "author": {
     "name": "Family Trip Agent Contributors"

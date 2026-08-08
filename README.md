@@ -1,8 +1,16 @@
 # Family Trip Agent
 
+[![CI](https://github.com/ZeronO-L/family-trip-agent/actions/workflows/test.yml/badge.svg)](https://github.com/ZeronO-L/family-trip-agent/actions/workflows/test.yml)
+[![Release](https://img.shields.io/github/v/release/ZeronO-L/family-trip-agent?include_prereleases&label=release)](https://github.com/ZeronO-L/family-trip-agent/releases)
+[![License: MIT](https://img.shields.io/github/license/ZeronO-L/family-trip-agent)](./LICENSE)
+[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-16B8C4)](https://agentskills.io/)
+[![skills.sh](https://skills.sh/b/ZeronO-L/family-trip-agent)](https://skills.sh/ZeronO-L/family-trip-agent)
+
+![Family Trip Agent social preview](./assets/social-preview.jpg)
+
 An open-source, local-first Agent Skill designed for family road trips worldwide, with region-dependent source coverage and validation status.
 
-> Status: `0.1.0-alpha.1` is publicly available. Static checks, deterministic evaluations, global-source smoke evidence, independent multi-turn Codex planning and replan tests, and GitHub Actions pass. Codex is runtime-verified; other documented hosts currently have structural compatibility evidence only. Regional coverage varies.
+> Status: `0.1.0-alpha.2` is publicly available. Static checks, deterministic evaluations, global-source smoke evidence, independent multi-turn Codex planning and replan tests, and GitHub Actions pass. Codex is runtime-verified; other documented hosts currently have structural compatibility evidence only. Regional coverage varies.
 
 ## Why this project exists
 
@@ -16,6 +24,28 @@ Most travel planners stop after producing an itinerary. Family trips need a long
 6. promote repeated, user-confirmed lessons into reusable family rules.
 
 Family Trip Agent keeps `planned`, `selected`, `booked`, and `actual` facts separate. Recommendations remain traceable, revisable, and distinct from confirmed reservations.
+
+## 30-second behavior demo
+
+Start with a normal planning request:
+
+```text
+Plan a seven-day family road trip for two adults and one teenager.
+Keep the pace relaxed, verify parking, and include a full-meal option
+plus a light-meal fallback.
+```
+
+The Agent does more than write a day-by-day itinerary:
+
+| Stage | Observable behavior |
+| --- | --- |
+| Plan | Compares route shapes, calculates every planned drive, protects rest windows, and labels the real trip intensity. |
+| Verify | Separates official policy, maps, inventory, reviews, weather, and road sources; records blocked or partial access. |
+| Execute | Keeps selected, booked, planned, and actual facts distinct so recommendations never masquerade as reservations. |
+| Replan | After rain, fatigue, closure, delay, or parking failure, preserves hard commitments and changes only the affected part of the trip. |
+| Learn | Turns completed-trip feedback into regression cases first; reusable family rules require confirmation or repeated evidence. |
+
+For example, if heavy rain makes a mountain route unsafe after lodging is booked, the Agent keeps the stay, removes the risky scenic segment, selects the safest verified route class, recalculates meal and arrival buffers, and preserves the old plan as history.
 
 ## Global research support
 
@@ -126,6 +156,7 @@ evals/live/                    Recorded web-research smoke evidence
 evals/prompts/                 Runtime forward-test prompts
 evals/runtime/                 Recorded runtime behavior evidence
 examples/                      Fully synthetic public example
+assets/                        Social preview and public visual assets
 scripts/                       Validation, privacy, portability, and eval commands
 docs/                          Architecture, compatibility, and testing scope
 ```

@@ -1,6 +1,7 @@
 ---
 name: manage-family-road-trip
 description: Plan, validate, execute, replan, publish, and retrospect family self-drive trips while preserving plan-versus-actual history and user-confirmed family rules. Use when a user asks to plan a family road trip, compare route directions, research hotels/restaurants/attractions, verify POIs/parking/weather/operating status, adjust an active trip after heat/rain/fatigue/delay/closure, record actual expenses and feedback, or turn a completed trip into reusable rules and regression cases.
+license: MIT
 ---
 
 # Manage Family Road Trip

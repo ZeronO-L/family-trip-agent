@@ -25,13 +25,19 @@ for (const file of files) {
   }
 }
 
-const issueFormPath = path.join(githubRoot, "ISSUE_TEMPLATE", "anonymized-behavior-report.yml");
-const issueForm = YAML.parse(await fs.readFile(issueFormPath, "utf8"));
-if (!issueForm.name || !issueForm.description || !Array.isArray(issueForm.body)) {
-  throw new Error("Anonymized behavior report: missing name, description, or body");
-}
-if (!issueForm.body.some((item) => item.type === "checkboxes" && item.id === "privacy_confirmation")) {
-  throw new Error("Anonymized behavior report: privacy confirmation is required");
+const issueTemplateRoot = path.join(githubRoot, "ISSUE_TEMPLATE");
+const issueForms = (await yamlFiles(issueTemplateRoot))
+  .filter((file) => path.basename(file) !== "config.yml");
+
+for (const file of issueForms) {
+  const issueForm = YAML.parse(await fs.readFile(file, "utf8"));
+  const relativePath = path.relative(root, file);
+  if (!issueForm.name || !issueForm.description || !Array.isArray(issueForm.body)) {
+    throw new Error(`${relativePath}: missing name, description, or body`);
+  }
+  if (!issueForm.body.some((item) => item.type === "checkboxes" && item.id === "privacy_confirmation")) {
+    throw new Error(`${relativePath}: privacy confirmation is required`);
+  }
 }
 
-console.log(`Validated ${files.length} GitHub YAML files and the anonymized feedback privacy gate.`);
+console.log(`Validated ${files.length} GitHub YAML files and ${issueForms.length} issue-form privacy gates.`);
