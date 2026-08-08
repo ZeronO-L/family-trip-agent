@@ -8,7 +8,7 @@ Thank you for helping make family travel planning more executable and less fragi
 - Improve a schema without breaking existing examples.
 - Clarify an operational checklist or source-verification rule.
 - Fix a false positive or false negative in the deterministic policy engine.
-- Improve Chinese or English documentation.
+- Improve documentation clarity or accessibility.
 
 ## Behavioral change workflow
 

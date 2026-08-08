@@ -74,6 +74,7 @@ Clone and verify the project:
 ```bash
 git clone https://github.com/ZeronO-L/family-trip-agent.git
 cd family-trip-agent
+npm ci
 npm test
 ```
 
@@ -142,14 +143,14 @@ The project has already started testing; it is not waiting until publication.
 - A public-repository privacy audit that rejects CJK identity text, local user paths, original-route markers, and domestic-only provider names.
 - A regional validation registry that keeps `experimental`, `desk_verified`, `community_tested`, and `field_tested` claims separate and evidence-scoped.
 
-What remains before the first public GitHub push:
+Release maintenance requirements:
 
 - keep untested hosts labeled as structural support rather than runtime verified;
-- rerun or refresh the live-source smoke record if it is older than 30 days at publication time;
-- run the complete release gate from a clean exported copy;
-- verify installation from a clean checkout;
+- rerun or refresh the live-source smoke record when it is older than 30 days;
+- run the complete release gate from a clean checkout before each version tag;
+- verify installation from the public repository;
 - inspect git author metadata, account profile, screenshots, and repository history for identity leakage;
-- complete a final human review of safety claims and documentation.
+- review safety claims and documentation before each release.
 
 See [testing.md](./docs/testing.md) for the full quality gate and current limitations.
 
