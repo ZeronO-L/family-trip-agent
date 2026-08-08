@@ -1,0 +1,37 @@
+{
+  "schema_version": "0.1.0",
+  "record_id": "family-example-001",
+  "household_label": "Synthetic family of three",
+  "members": [
+    { "member_id": "adult-driver", "role": "parent", "age_group": "adult", "drives": true, "needs": ["adequate rest", "simple parking"] },
+    { "member_id": "adult-passenger", "role": "parent", "age_group": "adult", "drives": false, "needs": ["clean lodging", "local breakfast"] },
+    { "member_id": "teen", "role": "child", "age_group": "teen", "drives": false, "needs": ["heat protection", "meal flexibility"] }
+  ],
+  "preferences": {
+    "lodging": {
+      "target_price_usd": 160,
+      "max_price_usd": 230,
+      "priorities": ["cleanliness", "useful area", "legal parking", "laundry on long trips"],
+      "preferred_room": "family room",
+      "fallback_room": "two queen beds"
+    },
+    "meals": {
+      "priorities": ["hygiene", "route fit", "parking", "local character"],
+      "breakfast": "prefer a local breakfast outside the hotel when executable",
+      "avoid": ["repeated similar dishes", "venues with repeated freshness complaints"]
+    },
+    "mobility": {
+      "midday_heat_rest": true,
+      "avoid_long_walk_after_driving": true
+    },
+    "driving": {
+      "safety_over_schedule": true,
+      "service_areas_are_optional_anchors": true,
+      "avoid_unverified_roads_at_night": true
+    }
+  },
+  "rules": ["rule-heat-rest", "rule-mountain-meal", "rule-parking-action-card"],
+  "version": 1,
+  "updated_at": "2030-01-01T00:00:00Z",
+  "updated_by": "synthetic-example"
+}

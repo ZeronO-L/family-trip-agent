@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://family-trip-agent.local/schemas/eval-case.schema.json",
+  "title": "Family trip behavior evaluation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["case_id", "title", "priority", "input", "must_include_actions", "must_not_include_actions", "privacy"],
+  "properties": {
+    "case_id": { "type": "string" },
+    "title": { "type": "string" },
+    "priority": { "enum": ["P0", "P1", "P2"] },
+    "input": { "type": "object" },
+    "must_include_actions": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "must_not_include_actions": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "source_case": { "type": "string" },
+    "privacy": {
+      "type": "object",
+      "required": ["synthetic_or_anonymized"],
+      "properties": { "synthetic_or_anonymized": { "const": true } }
+    }
+  }
+}

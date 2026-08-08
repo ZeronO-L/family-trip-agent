@@ -1,0 +1,24 @@
+{
+  "name": "family-trip-agent",
+  "version": "0.1.0-alpha.1",
+  "description": "Plan, replan, publish, and learn from executable family road trips.",
+  "author": {
+    "name": "Family Trip Agent Contributors"
+  },
+  "license": "MIT",
+  "keywords": ["travel", "road-trip", "family", "itinerary", "agent"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Family Trip Agent",
+    "shortDescription": "Plan, replan, and learn from executable family road trips",
+    "longDescription": "A local-first family road-trip agent that separates plan from reality, validates execution risks, replans when conditions change, and learns only from user-confirmed feedback.",
+    "developerName": "Family Trip Agent Contributors",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "Plan an executable family road trip with verified global sources.",
+      "Replan today's trip after weather, fatigue, traffic, or a closure.",
+      "Compare the plan with reality and propose family rules for confirmation."
+    ]
+  }
+}

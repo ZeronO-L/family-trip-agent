@@ -1,0 +1,22 @@
+{
+  "case_id": "meal-review-evidence-completeness",
+  "title": "Important meal recommendations include independent negative-review evidence",
+  "priority": "P1",
+  "input": {
+    "meal_research": {
+      "important_decision": true,
+      "independent_review_sources": 0,
+      "negative_patterns_classified": false
+    }
+  },
+  "must_include_actions": [
+    "collect_two_independent_review_sources",
+    "classify_negative_review_patterns"
+  ],
+  "must_not_include_actions": [
+    "treat_official_menu_as_quality_evidence",
+    "recommend_without_review_limitations"
+  ],
+  "source_case": "An anonymized blind run used official restaurant pages for hours and menus but supplied no independent experience evidence.",
+  "privacy": { "synthetic_or_anonymized": true }
+}

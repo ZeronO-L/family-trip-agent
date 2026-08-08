@@ -1,0 +1,32 @@
+{
+  "case_id": "multisource-route-consistency",
+  "title": "Road loop reconciles conflicting source waypoints before routing",
+  "priority": "P0",
+  "input": {
+    "route": {
+      "scenic_waypoints": ["Airport", "Castle town", "University city", "Literary town", "Northern city", "Lakeside village", "Highland base", "Island base", "Capital city", "Historic city", "Airport"],
+      "waypoint_order_verified": false,
+      "source_versions_conflict": true,
+      "ambiguous_waypoints": ["Island base"],
+      "backtracking_detected": true,
+      "drive_times_realtime_verified": false,
+      "return_airport_confirmed": false
+    }
+  },
+  "must_include_actions": [
+    "verify_waypoint_order",
+    "preserve_manual_waypoint_order",
+    "reconcile_source_waypoints",
+    "resolve_ambiguous_waypoints",
+    "remove_backtracking_or_explain_constraint",
+    "treat_static_drive_times_as_unverified",
+    "resolve_return_airport"
+  ],
+  "must_not_include_actions": [
+    "copy_source_route_as_verified",
+    "lock_unverified_drive_times",
+    "infer_return_airport"
+  ],
+  "source_case": "An anonymized multi-source road-loop draft omitted stops, used an area name as a POI, and mixed static drive-time claims with an unspecified return airport.",
+  "privacy": { "synthetic_or_anonymized": true }
+}

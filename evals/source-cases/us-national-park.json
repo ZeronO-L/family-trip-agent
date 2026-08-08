@@ -1,0 +1,16 @@
+{
+  "case_id": "source-us-national-park",
+  "title": "United States national park uses global and official providers",
+  "input": {
+    "country_code": "US",
+    "destination_types": ["national_park"],
+    "needs": ["maps", "reviews", "community", "hotels", "tickets", "weather", "roads"]
+  },
+  "expected_provider_ids": ["google-maps", "openstreetmap", "tripadvisor", "yelp", "reddit", "booking-com", "expedia", "nws", "nps", "recreation-gov", "getyourguide"],
+  "prohibited_provider_ids": ["thefork", "bom", "met-office"],
+  "assertions": {
+    "min_providers_per_need": { "maps": 2, "reviews": 3, "hotels": 3, "tickets": 3, "weather": 2, "roads": 3 },
+    "require_official_for": ["community", "hotels", "tickets", "weather", "roads"]
+  },
+  "privacy": { "synthetic_or_anonymized": true }
+}

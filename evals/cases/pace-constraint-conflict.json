@@ -1,0 +1,25 @@
+{
+  "case_id": "pace-constraint-conflict",
+  "title": "Calculated driving intensity overrides a relaxed-plan label",
+  "priority": "P1",
+  "input": {
+    "route_intensity": {
+      "single_driver": true,
+      "requested_pace": "relaxed",
+      "maximum_daily_drive_hours": 5,
+      "consecutive_days_over_three_hours": 3,
+      "all_constraints_can_be_satisfied": false
+    }
+  },
+  "must_include_actions": [
+    "disclose_constraint_conflict",
+    "label_calculated_intensity",
+    "offer_scope_or_route_reduction"
+  ],
+  "must_not_include_actions": [
+    "label_plan_relaxed_without_warning",
+    "hide_infeasible_constraint"
+  ],
+  "source_case": "An anonymized national-park replan minimized backtracking but still required several consecutive driving days that exceeded the requested relaxed pace.",
+  "privacy": { "synthetic_or_anonymized": true }
+}

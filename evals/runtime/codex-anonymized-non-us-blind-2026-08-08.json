@@ -1,0 +1,88 @@
+{
+  "test_id": "runtime-codex-anonymized-non-us-blind-2026-08-08",
+  "tested_at": "2026-08-08T09:56:17Z",
+  "host": "Codex desktop",
+  "execution_context": "independent_fresh_task",
+  "clean_runtime_gate_satisfied": false,
+  "result": "pass_with_limitations",
+  "destination": "Anonymized non-US multi-city road trip",
+  "prompt_ref": "evals/prompts/anonymized-multigeneration-replan.md",
+  "assertions": [
+    {
+      "id": "multigeneration-constraint-model",
+      "expected": "Preserve party-size changes, older-traveler limits, and a hard nightly return deadline.",
+      "observed": "The plan kept separate five-person and three-person stages and protected the older travelers' nightly deadline throughout the loop.",
+      "verdict": "pass"
+    },
+    {
+      "id": "locked-stay-preservation",
+      "expected": "Freeze confirmed cancellable stays during a later replan.",
+      "observed": "All confirmed stays remained locked and were not re-ranked or replaced when an attraction and another lodging candidate failed.",
+      "verdict": "pass"
+    },
+    {
+      "id": "unavailable-attraction-removal",
+      "expected": "Remove a failed time-sensitive attraction reservation and avoid an excessive cross-city commute.",
+      "observed": "The failed attraction was deleted rather than kept as standby; the morning became local family time with a short optional activity and a protected onward departure.",
+      "verdict": "pass"
+    },
+    {
+      "id": "legal-room-occupancy",
+      "expected": "Reject a room that cannot legally accommodate the continuing party and keep replacements unbooked until confirmed.",
+      "observed": "The unavailable room stayed unbooked; alternatives required explicit three-person occupancy, real bed configuration, price ceiling, cancellation policy, and parking confirmation.",
+      "verdict": "pass"
+    },
+    {
+      "id": "plan-version-history",
+      "expected": "Create a new plan version and retain the previous version as history.",
+      "observed": "The replan recorded its triggers, immutable commitments, removed items, retained items, additions, cost impact, and next actions without overwriting the prior plan.",
+      "verdict": "pass"
+    },
+    {
+      "id": "budget-and-actual-separation",
+      "expected": "Keep unreported booking amounts, planned budget, committed cost, and actual spend separate.",
+      "observed": "Confirmed stays with missing order totals remained amount-unknown, the replacement stayed within a planning ceiling, and no amount was promoted to actual spending.",
+      "verdict": "pass"
+    },
+    {
+      "id": "operational-evidence-refresh",
+      "expected": "Refresh dynamic entry, map, weather, lodging, and parking evidence after the trigger.",
+      "observed": "The replan refreshed the affected source roles, retained unresolved parking and inventory components, and attached next-day or pre-booking confirmation actions.",
+      "verdict": "pass"
+    }
+  ],
+  "sources": [
+    {
+      "provider_id": "official-attraction-authority-withheld",
+      "role": "official_entry_policy",
+      "url": "withheld:private-anonymized-runtime-evidence",
+      "access_result": "full",
+      "observed": "The public record retains the verified behavior but withholds the private destination and source identity."
+    },
+    {
+      "provider_id": "official-weather-authority-withheld",
+      "role": "official_weather",
+      "url": "withheld:private-anonymized-runtime-evidence",
+      "access_result": "full",
+      "observed": "The private run used an official national weather role and explicit recheck timing; source identity is withheld."
+    },
+    {
+      "provider_id": "commercial-inventory-source-withheld",
+      "role": "lodging_inventory",
+      "url": "withheld:private-anonymized-runtime-evidence",
+      "access_result": "partial",
+      "observed": "Dynamic room and parking facts remained conditional on the booking page and direct-property confirmation."
+    }
+  ],
+  "limitations": [
+    "This is a behavior-only public record; the private destination, route, providers, properties, dates, and raw localized output are intentionally withheld.",
+    "Because the public record cannot independently reproduce the private source trail, it does not satisfy the clean host runtime gate or upgrade a named regional status.",
+    "No booking, payment, cancellation, live navigation, or completed trip was executed.",
+    "The reusable behaviors from this run are represented by synthetic deterministic cases under evals/cases."
+  ],
+  "privacy": {
+    "synthetic_or_public_destination": true,
+    "contains_personal_data": false,
+    "contains_local_paths": false
+  }
+}

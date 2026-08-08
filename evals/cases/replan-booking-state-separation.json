@@ -1,0 +1,33 @@
+{
+  "case_id": "replan-booking-state-separation",
+  "title": "Replanning preserves bookings and keeps available inventory unconfirmed",
+  "priority": "P0",
+  "input": {
+    "replan": {
+      "trigger_present": true,
+      "old_plan_version_present": true,
+      "booked_commitments_present": true
+    },
+    "booking_state": {
+      "available_inventory_found": true,
+      "user_confirmed_booking": false,
+      "quoted_cost_present": true,
+      "actual_expense_confirmed": false
+    }
+  },
+  "must_include_actions": [
+    "record_replan_trigger",
+    "create_new_plan_version",
+    "preserve_booked_commitments",
+    "keep_available_inventory_as_selected",
+    "require_confirmation_before_booking",
+    "keep_quoted_cost_out_of_actuals"
+  ],
+  "must_not_include_actions": [
+    "overwrite_previous_plan",
+    "mark_available_inventory_as_booked",
+    "record_unconfirmed_cost_as_actual"
+  ],
+  "source_case": "An anonymized blind run changed the middle night after two other stays were already booked and a cancellable room was only available, not yet reserved.",
+  "privacy": { "synthetic_or_anonymized": true }
+}

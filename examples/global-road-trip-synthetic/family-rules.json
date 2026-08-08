@@ -1,0 +1,50 @@
+[
+  {
+    "schema_version": "0.1.0",
+    "rule_id": "rule-heat-rest",
+    "title": "Protect a midday rest window in high heat",
+    "state": "active",
+    "kind": "dynamic",
+    "category": "weather",
+    "conditions": { "temperature_c_gte": 33, "urban_outdoor_activity": true },
+    "actions": [{ "type": "add_rest_window", "value": "13:30-17:00" }],
+    "evidence_case_ids": ["case-heat-city-1", "case-heat-city-2", "case-heat-city-3"],
+    "evidence_count": 3,
+    "confidence": 0.95,
+    "confirmed_by_user": true,
+    "last_verified_at": "2030-08-05T12:00:00Z",
+    "supersedes_rule_id": null
+  },
+  {
+    "schema_version": "0.1.0",
+    "rule_id": "rule-mountain-meal",
+    "title": "Do not enter a weak-dining mountain corridor without a complete meal fallback",
+    "state": "active",
+    "kind": "hard",
+    "category": "safety",
+    "conditions": { "weak_dining_corridor": true, "continuous_mountain_driving": true },
+    "actions": [{ "type": "pack_complete_vehicle_meal" }, { "type": "set_lunch_decision_deadline", "value": "11:30" }],
+    "evidence_case_ids": ["case-mountain-no-lunch"],
+    "evidence_count": 1,
+    "confidence": 0.9,
+    "confirmed_by_user": true,
+    "last_verified_at": "2030-08-04T12:00:00Z",
+    "supersedes_rule_id": null
+  },
+  {
+    "schema_version": "0.1.0",
+    "rule_id": "rule-snack-one-off",
+    "title": "A local snack was not preferred in one visit",
+    "state": "case",
+    "kind": "soft",
+    "category": "meal",
+    "conditions": { "specific_snack": "synthetic local snack" },
+    "actions": [{ "type": "lower_candidate_priority" }],
+    "evidence_case_ids": ["case-snack-one-off"],
+    "evidence_count": 1,
+    "confidence": 0.35,
+    "confirmed_by_user": false,
+    "last_verified_at": null,
+    "supersedes_rule_id": null
+  }
+]

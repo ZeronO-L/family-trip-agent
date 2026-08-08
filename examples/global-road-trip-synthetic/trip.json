@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.1.0",
+  "trip_id": "trip-example-global-loop",
+  "family_record_id": "family-example-001",
+  "title": "Synthetic coastal-and-mountain family loop",
+  "status": "completed",
+  "start_date": "2030-08-01",
+  "end_date": "2030-08-08",
+  "origin": "Harbor City",
+  "destinations": ["Forest Gateway", "Lake District", "Coastal Town"],
+  "theme": ["family road trip", "mountain scenery", "coast"],
+  "locale": { "language": "en", "currency": "USD", "country_codes": ["US"] },
+  "vehicle": { "type": "gasoline car", "drivers": 1 },
+  "budget": { "currency": "USD", "low": 2100, "high": 3200 },
+  "hard_constraints": [
+    { "type": "dates", "value": "8 days" },
+    { "type": "safety", "value": "no unfamiliar mountain driving at night" },
+    { "type": "lodging", "value": "one clean room for three travelers" }
+  ],
+  "route_options": [
+    {
+      "route_id": "coast-first",
+      "city_order": ["Harbor City", "Coastal Town", "Lake District", "Forest Gateway", "Harbor City"],
+      "daily_drive_hours": [5.5, 3, 5, 3.5, 6.5],
+      "hotel_changes": 4,
+      "theme_coverage": ["coast", "mountain scenery"],
+      "selected": false,
+      "decision_reason": "The final long drive follows the most demanding mountain segment."
+    },
+    {
+      "route_id": "mountain-first",
+      "city_order": ["Harbor City", "Forest Gateway", "Lake District", "Coastal Town", "Harbor City"],
+      "daily_drive_hours": [6.5, 3.5, 5, 3, 5.5],
+      "hotel_changes": 3,
+      "theme_coverage": ["mountain scenery", "coast"],
+      "selected": true,
+      "decision_reason": "Balances first and final day load and protects the last day from accumulated fatigue."
+    }
+  ],
+  "selected_route_id": "mountain-first",
+  "source_evidence": [
+    { "role": "maps", "provider": "google-maps", "access_result": "partial", "requires_recheck": true },
+    { "role": "weather", "provider": "official-meteorological-service", "access_result": "full", "requires_recheck": true },
+    { "role": "hotels", "provider": "booking-com", "access_result": "full", "requires_direct_confirmation": true }
+  ],
+  "plan_versions": [
+    {
+      "version_id": "plan-v1",
+      "created_at": "2030-07-01T00:00:00Z",
+      "status": "superseded",
+      "trigger": "initial direction",
+      "days": []
+    },
+    {
+      "version_id": "plan-v2",
+      "created_at": "2030-07-05T00:00:00Z",
+      "status": "accepted",
+      "trigger": "reverse loop after first and final day load comparison",
+      "days": [
+        { "day": 1, "type": "long_drive", "destination": "Forest Gateway", "recovery_window": true },
+        { "day": 3, "type": "scenic_out_and_back", "destination": "Lake District", "compact_variant": true },
+        { "day": 4, "type": "mountain_scenic_drive", "destination": "Lake District", "meal_fallback_required": true },
+        { "day": 8, "type": "return_with_hard_appointment", "destination": "Harbor City", "optional_stops": false }
+      ]
+    }
+  ],
+  "actual_events": [],
+  "expenses": [],
+  "version": 2,
+  "updated_at": "2030-08-09T00:00:00Z"
+}

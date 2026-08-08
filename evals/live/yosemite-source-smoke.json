@@ -1,0 +1,73 @@
+{
+  "test_id": "live-source-yosemite-2026-08-08",
+  "destination": "Yosemite Valley, United States",
+  "retrieved_at": "2026-08-08T08:13:13Z",
+  "scope": "Recorded web-research smoke test for source accessibility and fallback behavior; not a complete itinerary or booking test.",
+  "sources": [
+    {
+      "provider_id": "google-maps",
+      "role": "maps",
+      "url": "https://www.google.com/maps/search/Yosemite+Falls+Day+Use+Parking",
+      "access_result": "partial",
+      "fact_checked": "The parking POI and general location are discoverable.",
+      "verdict": "Usable for POI discovery, but the full interactive route requires JavaScript and must not be treated as fully verified by a text-only agent."
+    },
+    {
+      "provider_id": "tripadvisor",
+      "role": "reviews",
+      "url": "https://www.tripadvisor.com/Restaurants-g61000-Yosemite_National_Park_California.html",
+      "access_result": "partial",
+      "fact_checked": "Family restaurant listings and review discovery are searchable.",
+      "verdict": "Useful as one review source; detailed negative-review analysis still requires page-level access or a second provider."
+    },
+    {
+      "provider_id": "yelp",
+      "role": "reviews",
+      "url": "https://www.yelp.com/search?find_desc=Restaurants&find_loc=Yosemite%2C+CA",
+      "access_result": "blocked",
+      "fact_checked": "Automated restaurant search access.",
+      "verdict": "Robots restrictions can block retrieval, so the Agent must switch to Tripadvisor, Google reviews, or direct restaurant sources."
+    },
+    {
+      "provider_id": "booking-com",
+      "role": "hotels",
+      "url": "https://www.booking.com/parking/city/us/el-portal.html",
+      "access_result": "partial",
+      "fact_checked": "Parking and laundry claims can be discovered for hotel candidates near the park.",
+      "verdict": "Suitable for candidate research only; current price, cancellation, parking operation, laundry details, and availability require date-specific and direct-property confirmation."
+    },
+    {
+      "provider_id": "nws",
+      "role": "weather",
+      "url": "https://forecast.weather.gov/MapClick.php?lat=37.757560&lon=-119.596997",
+      "access_result": "partial",
+      "fact_checked": "An official point-forecast endpoint exists for Yosemite Valley, but current forecast content was not reliably retrievable in the recheck.",
+      "verdict": "Keep NWS as the official weather authority, record the stale or unavailable result, and require a dated recheck instead of asserting a current forecast."
+    },
+    {
+      "provider_id": "nps",
+      "role": "official_attraction",
+      "url": "https://www.nps.gov/yose/planyourvisit/conditions.htm",
+      "access_result": "full",
+      "fact_checked": "Current conditions, road status, reservations, and park alerts are published by the official park authority.",
+      "verdict": "Must take precedence over community posts and commercial listings for closures and entry policy."
+    },
+    {
+      "provider_id": "getyourguide",
+      "role": "tickets",
+      "url": "https://www.getyourguide.com/yosemite-valley-l95261/",
+      "access_result": "full",
+      "fact_checked": "Tour inventory, duration, pickup, and displayed pricing are discoverable.",
+      "verdict": "Useful for comparison only; official access rules and seller terms must be checked separately."
+    }
+  ],
+  "limitations": [
+    "No transaction, login, booking, cancellation, or payment was attempted.",
+    "No mobile-app navigation or live traffic route was executed.",
+    "This run validates source routing and fallback behavior, not end-to-end itinerary quality on every host."
+  ],
+  "privacy": {
+    "synthetic_or_public_destination": true,
+    "contains_personal_data": false
+  }
+}

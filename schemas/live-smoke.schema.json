@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://family-trip-agent.local/schemas/live-smoke.schema.json",
+  "title": "Recorded live source smoke test",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["test_id", "destination", "retrieved_at", "scope", "sources", "limitations", "privacy"],
+  "properties": {
+    "test_id": { "type": "string", "minLength": 1 },
+    "destination": { "type": "string", "minLength": 1 },
+    "retrieved_at": { "type": "string", "format": "date-time" },
+    "scope": { "type": "string", "minLength": 1 },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["provider_id", "role", "url", "access_result", "fact_checked", "verdict"],
+        "properties": {
+          "provider_id": { "type": "string" },
+          "role": { "type": "string" },
+          "url": { "type": "string" },
+          "access_result": { "enum": ["full", "partial", "blocked", "manual_only"] },
+          "fact_checked": { "type": "string" },
+          "verdict": { "type": "string" }
+        }
+      }
+    },
+    "limitations": { "type": "array", "items": { "type": "string" } },
+    "privacy": {
+      "type": "object",
+      "required": ["synthetic_or_public_destination", "contains_personal_data"],
+      "properties": {
+        "synthetic_or_public_destination": { "const": true },
+        "contains_personal_data": { "const": false }
+      }
+    }
+  }
+}

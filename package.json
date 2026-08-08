@@ -1,0 +1,33 @@
+{
+  "name": "family-trip-agent",
+  "version": "0.1.0-alpha.1",
+  "private": true,
+  "type": "module",
+  "description": "Open-source, local-first, portable family road-trip Agent Skill.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZeronO-L/family-trip-agent.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ZeronO-L/family-trip-agent/issues"
+  },
+  "homepage": "https://github.com/ZeronO-L/family-trip-agent#readme",
+  "scripts": {
+    "validate": "node scripts/validate-data.mjs",
+    "eval:policy": "node scripts/run-evals.mjs",
+    "eval:sources": "node scripts/run-source-evals.mjs",
+    "eval": "npm run eval:policy && npm run eval:sources",
+    "test:portability": "node scripts/test-portability.mjs",
+    "test:github": "node scripts/validate-github-templates.mjs",
+    "test:privacy": "node scripts/privacy-audit.mjs",
+    "test:live-record": "node scripts/validate-live-smoke.mjs",
+    "test": "npm run validate && npm run eval && npm run test:portability && npm run test:github && npm run test:privacy && npm run test:live-record",
+    "release:check": "npm test && node scripts/validate-live-smoke.mjs --max-age-days=30"
+  },
+  "devDependencies": {
+    "yaml": "^2.8.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://family-trip-agent.local/schemas/feedback-case.schema.json",
+  "title": "Trip feedback case",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "case_id", "trip_id", "title", "priority", "plan", "actual", "deviation", "causes", "impacts", "privacy"],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "case_id": { "type": "string" },
+    "trip_id": { "type": "string" },
+    "title": { "type": "string" },
+    "priority": { "enum": ["P0", "P1", "P2"] },
+    "plan": { "type": "object" },
+    "actual": { "type": "object" },
+    "deviation": { "type": "string" },
+    "causes": { "type": "array", "items": { "type": "string" } },
+    "impacts": { "type": "array", "items": { "type": "string" } },
+    "candidate_rule_id": { "type": ["string", "null"] },
+    "privacy": {
+      "type": "object",
+      "required": ["synthetic_or_anonymized", "public_contribution_allowed"],
+      "properties": {
+        "synthetic_or_anonymized": { "type": "boolean" },
+        "public_contribution_allowed": { "type": "boolean" }
+      }
+    }
+  }
+}

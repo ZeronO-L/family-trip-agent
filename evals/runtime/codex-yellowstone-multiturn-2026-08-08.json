@@ -1,0 +1,141 @@
+{
+  "test_id": "runtime-codex-yellowstone-multiturn-2026-08-08",
+  "tested_at": "2026-08-08T10:18:23Z",
+  "host": "Codex desktop",
+  "execution_context": "independent_fresh_task",
+  "clean_runtime_gate_satisfied": true,
+  "result": "pass",
+  "destination": "Yellowstone National Park, United States",
+  "prompt_ref": "evals/prompts/yellowstone-booking-replan.md",
+  "assertions": [
+    {
+      "id": "automatic-skill-routing",
+      "expected": "Trigger the family road-trip workflow from a normal travel request without repository-development context.",
+      "observed": "The fresh task activated the family road-trip workflow, identified the planning stage, and asked only for missing facts that affected route and inventory verification.",
+      "verdict": "pass"
+    },
+    {
+      "id": "route-and-map-evidence",
+      "expected": "Cross-check the route and publish complete daily driving totals after the lodging change.",
+      "observed": "The final version used official segment guidance plus independent route roles and recalculated all four days, including hotel approaches, internal park movements, fuel, and airport return.",
+      "verdict": "pass"
+    },
+    {
+      "id": "version-and-trigger-history",
+      "expected": "Preserve the old plan and create a new version that records the replan trigger.",
+      "observed": "The previous plan remained available while a new version recorded unavailable lodging, fixed bookings, removed items, retained items, additions, and downstream effects.",
+      "verdict": "pass"
+    },
+    {
+      "id": "booking-state-separation",
+      "expected": "Keep confirmed stays, visible inventory, quoted cost, and actual expense in separate states.",
+      "observed": "Two user-confirmed stays remained booked; the available middle night stayed selected but unconfirmed, and its quote was excluded from committed and actual totals.",
+      "verdict": "pass"
+    },
+    {
+      "id": "consecutive-reservation-continuity",
+      "expected": "Do not infer room continuity from matching room types under separate reservations.",
+      "observed": "The plan required the property to link the reservations and separately confirm keys, checkout, luggage handling, and whether a room move was required.",
+      "verdict": "pass"
+    },
+    {
+      "id": "downstream-recalculation",
+      "expected": "Recalculate route order, driver load, meals, parking, and the final airport buffer after moving the middle-night stay.",
+      "observed": "The thermal-area stop moved to the first day, the canyon day received a hard exit time, the northern loop became a light-luggage day, and the airport day retained a three-hour terminal target.",
+      "verdict": "pass"
+    },
+    {
+      "id": "parking-action-cards",
+      "expected": "Provide executable parking actions with search terms, approach, unknowns, and fallbacks.",
+      "observed": "Both hotels and all high-risk park stops received approach guidance, waiting limits, legal-parking rules, unresolved components, and explicit fallback actions.",
+      "verdict": "pass"
+    },
+    {
+      "id": "meal-negative-patterns",
+      "expected": "Use independent review roles and classify negative patterns for important meals.",
+      "observed": "The final plan separated official hours and menus from review evidence, grouped recurring queue, sellout, temperature, and food-quality concerns, and kept complete-meal fallbacks.",
+      "verdict": "pass"
+    },
+    {
+      "id": "source-access-contract",
+      "expected": "Expose source role, retrieval time, access result, unresolved fact, fallback, and recheck deadline.",
+      "observed": "A destination-local evidence table labeled full, partial, and unresolved access and attached fallbacks and deadlines to every operational claim.",
+      "verdict": "pass"
+    },
+    {
+      "id": "official-high-impact-facts",
+      "expected": "Use official authorities for road work, weather, entry policy, wildlife safety, and airport timing.",
+      "observed": "National Park Service, Grand Teton National Park, the airport authority, and direct lodging sources controlled the high-impact facts; exact weather remained scheduled for later refresh.",
+      "verdict": "pass"
+    }
+  ],
+  "sources": [
+    {
+      "provider_id": "nps-yellowstone-roads",
+      "role": "official_roads",
+      "url": "https://www.nps.gov/yell/planyourvisit/parkroads.htm",
+      "access_result": "full",
+      "observed": "Current construction windows, bridge delays, and road-status recheck requirements were available from the park authority."
+    },
+    {
+      "provider_id": "nps-yellowstone-fees",
+      "role": "official_entry_policy",
+      "url": "https://www.nps.gov/yell/planyourvisit/fees.htm",
+      "access_result": "full",
+      "observed": "The park authority confirmed entrance-pass requirements and that a vehicle reservation was not required."
+    },
+    {
+      "provider_id": "nps-nonresident-fees",
+      "role": "official_pass_policy",
+      "url": "https://www.nps.gov/aboutus/nonresident-fees.htm",
+      "access_result": "full",
+      "observed": "The official page supported conditional nonresident fee and annual-pass comparisons without assuming traveler residency."
+    },
+    {
+      "provider_id": "grand-teton-nps",
+      "role": "official_entry_route_roads",
+      "url": "https://www.nps.gov/grte/planyourvisit/road-construction.htm",
+      "access_result": "full",
+      "observed": "The entry-route authority supported the construction delays and the safer highway choice."
+    },
+    {
+      "provider_id": "direct-hotel-operator",
+      "role": "direct_lodging_operations",
+      "url": "https://www.yellowstonevacations.com/stay/lodging/the-ridgeline-hotel-at-yellowstone/",
+      "access_result": "full",
+      "observed": "The direct property source supported room-category and parking facts; room continuity across separate reservations remained unconfirmed."
+    },
+    {
+      "provider_id": "tripadvisor",
+      "role": "independent_reviews",
+      "url": "https://www.tripadvisor.com/",
+      "access_result": "partial",
+      "observed": "Recent review discovery supported recurring dining patterns but not a complete review corpus."
+    },
+    {
+      "provider_id": "restaurantji",
+      "role": "independent_reviews",
+      "url": "https://www.restaurantji.com/",
+      "access_result": "partial",
+      "observed": "A second review role supported pattern classification for queues, sellouts, service, and food consistency."
+    },
+    {
+      "provider_id": "bzn-airport",
+      "role": "official_airport_guidance",
+      "url": "https://bozemanairport.com/tsa-and-security",
+      "access_result": "full",
+      "observed": "The airport authority recommended arriving two hours before summer flights; the plan added a larger rental-car buffer."
+    }
+  ],
+  "limitations": [
+    "No booking, payment, cancellation, phone call, live navigation, or completed trip was executed.",
+    "Date-specific inventory and booking states came from the synthetic test conversation and were not independently transacted.",
+    "Daily drive times remain planning ranges subject to wildlife, weather, construction, and live traffic.",
+    "This record supports Codex runtime verification and United States desk verification only; it is not field-tested evidence."
+  ],
+  "privacy": {
+    "synthetic_or_public_destination": true,
+    "contains_personal_data": false,
+    "contains_local_paths": false
+  }
+}

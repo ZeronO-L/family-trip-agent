@@ -1,0 +1,31 @@
+{
+  "case_id": "unavailable-anchor-local-replan",
+  "title": "Unavailable attraction triggers a local replan without disturbing locked stays",
+  "priority": "P0",
+  "input": {
+    "replan": {
+      "trigger_present": true,
+      "booked_commitments_present": true
+    },
+    "attraction_change": {
+      "reservation_unavailable": true,
+      "one_way_commute_minutes": 70,
+      "same_area_alternative_required": true,
+      "downstream_departure_time_present": true
+    }
+  },
+  "must_include_actions": [
+    "record_replan_trigger",
+    "preserve_booked_commitments",
+    "remove_unavailable_attraction",
+    "prefer_low_commute_local_alternative",
+    "recalculate_downstream_departure"
+  ],
+  "must_not_include_actions": [
+    "keep_unavailable_attraction",
+    "replace_locked_stays_without_confirmation",
+    "preserve_long_commute_for_optional_stop"
+  ],
+  "source_case": "An anonymized multigenerational city stop lost a time-sensitive museum reservation and the corrected map estimate made the original cross-city detour impractical.",
+  "privacy": { "synthetic_or_anonymized": true }
+}

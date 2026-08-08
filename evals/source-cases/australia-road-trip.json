@@ -1,0 +1,16 @@
+{
+  "case_id": "source-australia-road-trip",
+  "title": "Australia road trip adds APAC lodging and national weather sources",
+  "input": {
+    "country_code": "AU",
+    "destination_types": ["coastal_road"],
+    "needs": ["maps", "reviews", "community", "hotels", "tickets", "weather", "roads"]
+  },
+  "expected_provider_ids": ["google-maps", "tripadvisor", "opentable", "booking-com", "expedia", "agoda", "bom", "official-road-authority"],
+  "prohibited_provider_ids": ["yelp", "nws", "met-office", "thefork"],
+  "assertions": {
+    "min_providers_per_need": { "maps": 2, "reviews": 3, "hotels": 4, "tickets": 3, "weather": 2, "roads": 2 },
+    "require_official_for": ["community", "hotels", "tickets", "weather", "roads"]
+  },
+  "privacy": { "synthetic_or_anonymized": true }
+}

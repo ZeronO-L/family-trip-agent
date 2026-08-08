@@ -1,0 +1,125 @@
+{
+  "schema_version": "0.1",
+  "updated_at": "2026-08-08",
+  "levels": [
+    {
+      "id": "experimental",
+      "description": "Provider-routing rules or static checks exist, but no complete destination research case has been reviewed."
+    },
+    {
+      "id": "desk_verified",
+      "description": "Maps, official sources, and operational claims have been checked in a non-field scenario; no completed family trip is implied."
+    },
+    {
+      "id": "community_tested",
+      "description": "At least one independent user has completed a trip and submitted anonymized plan-versus-actual feedback."
+    },
+    {
+      "id": "field_tested",
+      "description": "A real trip has been completed with captured plan-versus-actual evidence for the declared scope."
+    }
+  ],
+  "regions": [
+    {
+      "region_id": "united-states",
+      "label": "United States",
+      "status": "desk_verified",
+      "evidence_counts": {
+        "source_routing_cases": 1,
+        "desk_itinerary_cases": 3,
+        "live_source_records": 1,
+        "community_reports": 0,
+        "field_trips": 0
+      },
+      "verified_scope": [
+        "National-park source routing",
+        "Recorded map, review, hotel, weather, park-status, and ticket-source fallback behavior",
+        "One assisted Codex itinerary run covering parking, congestion, dining, hotel confirmation, and unresolved-weather handling",
+        "One independent multi-turn Codex planning and booking-aware replan run"
+      ],
+      "limitations": [
+        "No completed family trip is represented.",
+        "No booking, payment, live navigation, or mobile-app workflow has been verified.",
+        "The earlier assisted run does not satisfy the clean host runtime gate.",
+        "The original failed independent run is retained as regression history and does not reduce the later passing runtime result."
+      ],
+      "evidence_refs": [
+        "evals/source-cases/us-national-park.json",
+        "evals/live/yosemite-source-smoke.json",
+        "evals/runtime/codex-yosemite-2026-08-08.json",
+        "evals/runtime/codex-yellowstone-blind-2026-08-08.json",
+        "evals/runtime/codex-yellowstone-multiturn-2026-08-08.json"
+      ]
+    },
+    {
+      "region_id": "united-kingdom",
+      "label": "United Kingdom",
+      "status": "desk_verified",
+      "evidence_counts": {
+        "source_routing_cases": 1,
+        "desk_itinerary_cases": 2,
+        "live_source_records": 0,
+        "community_reports": 0,
+        "field_trips": 0
+      },
+      "verified_scope": [
+        "Country-appropriate source routing",
+        "Anonymized road-loop consistency checks",
+        "Anonymized city clustering and dynamic-reservation checks"
+      ],
+      "limitations": [
+        "No completed family trip is represented.",
+        "Live route timing, rental-car operations, hotel parking, and real bookings remain unverified."
+      ],
+      "evidence_refs": [
+        "evals/source-cases/uk-city-break.json",
+        "evals/cases/multisource-route-consistency.json",
+        "evals/cases/city-cluster-dynamic-entry.json"
+      ]
+    },
+    {
+      "region_id": "australia",
+      "label": "Australia",
+      "status": "experimental",
+      "evidence_counts": {
+        "source_routing_cases": 1,
+        "desk_itinerary_cases": 0,
+        "live_source_records": 0,
+        "community_reports": 0,
+        "field_trips": 0
+      },
+      "verified_scope": [
+        "Static source-routing coverage for weather, lodging, reviews, tickets, maps, and roads"
+      ],
+      "limitations": [
+        "No end-to-end destination research case has been reviewed.",
+        "No completed family trip is represented."
+      ],
+      "evidence_refs": [
+        "evals/source-cases/australia-road-trip.json"
+      ]
+    },
+    {
+      "region_id": "other-regions",
+      "label": "Other regions",
+      "status": "experimental",
+      "evidence_counts": {
+        "source_routing_cases": 1,
+        "desk_itinerary_cases": 0,
+        "live_source_records": 0,
+        "community_reports": 0,
+        "field_trips": 0
+      },
+      "verified_scope": [
+        "Unknown-market fallback to global and official-source discovery"
+      ],
+      "limitations": [
+        "Country-specific coverage and provider accessibility have not been established.",
+        "No completed family trip is represented."
+      ],
+      "evidence_refs": [
+        "evals/source-cases/global-fallback.json"
+      ]
+    }
+  ]
+}

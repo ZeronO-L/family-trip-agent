@@ -1,0 +1,19 @@
+{
+  "test_id": "gh-skill-local-install-2026-08-08",
+  "tested_at": "2026-08-08T05:00:00Z",
+  "installer": "GitHub CLI 2.97.0",
+  "source_mode": "local checkout through --from-local",
+  "isolation": "one newly initialized temporary Git repository per host",
+  "hosts": [
+    { "host": "Codex", "agent_flag": "codex", "destination_class": "shared .agents skill directory", "installed": true, "runtime_executed": false },
+    { "host": "Claude Code", "agent_flag": "claude-code", "destination_class": "Claude project skill directory", "installed": true, "runtime_executed": false },
+    { "host": "OpenCode", "agent_flag": "opencode", "destination_class": "shared .agents skill directory", "installed": true, "runtime_executed": false },
+    { "host": "GitHub Copilot", "agent_flag": "github-copilot", "destination_class": "shared .agents skill directory", "installed": true, "runtime_executed": false },
+    { "host": "Gemini CLI", "agent_flag": "gemini-cli", "destination_class": "shared .agents skill directory", "installed": true, "runtime_executed": false },
+    { "host": "Cursor", "agent_flag": "cursor", "destination_class": "shared .agents skill directory", "installed": true, "runtime_executed": false }
+  ],
+  "privacy": {
+    "contains_local_paths": false,
+    "contains_personal_data": false
+  }
+}

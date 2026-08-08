@@ -1,0 +1,50 @@
+[
+  {
+    "host": "Codex and ChatGPT Work",
+    "install_mode": "native_plugin",
+    "entrypoint": ".codex-plugin/plugin.json",
+    "skill_path": "skills/manage-family-road-trip/SKILL.md",
+    "static_validation": "official_validator",
+    "runtime_validation": "verified"
+  },
+  {
+    "host": "Claude Code",
+    "install_mode": "native_plugin_or_agent_skill",
+    "entrypoint": ".claude-plugin/plugin.json",
+    "skill_path": "skills/manage-family-road-trip/SKILL.md",
+    "static_validation": "manifest_and_open_standard",
+    "runtime_validation": "pending"
+  },
+  {
+    "host": "OpenCode",
+    "install_mode": "agent_skill",
+    "entrypoint": ".agents/skills/manage-family-road-trip/SKILL.md",
+    "skill_path": "skills/manage-family-road-trip/SKILL.md",
+    "static_validation": "open_standard",
+    "runtime_validation": "pending"
+  },
+  {
+    "host": "GitHub Copilot",
+    "install_mode": "agent_skill",
+    "entrypoint": ".agents/skills/manage-family-road-trip/SKILL.md",
+    "skill_path": "skills/manage-family-road-trip/SKILL.md",
+    "static_validation": "open_standard",
+    "runtime_validation": "pending"
+  },
+  {
+    "host": "Gemini CLI",
+    "install_mode": "agent_skill",
+    "entrypoint": ".agents/skills/manage-family-road-trip/SKILL.md",
+    "skill_path": "skills/manage-family-road-trip/SKILL.md",
+    "static_validation": "open_standard",
+    "runtime_validation": "pending"
+  },
+  {
+    "host": "Cursor",
+    "install_mode": "agent_skill",
+    "entrypoint": ".agents/skills/manage-family-road-trip/SKILL.md",
+    "skill_path": "skills/manage-family-road-trip/SKILL.md",
+    "static_validation": "open_standard",
+    "runtime_validation": "pending"
+  }
+]

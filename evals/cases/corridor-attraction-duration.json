@@ -1,0 +1,10 @@
+{
+  "case_id": "corridor-attraction-duration",
+  "title": "Corridor attraction offers compact and full plans",
+  "priority": "P1",
+  "input": { "attraction": { "planned_hours": 8, "corridor_style": true } },
+  "must_include_actions": ["offer_compact_and_full_versions"],
+  "must_not_include_actions": ["require_full_day"],
+  "source_case": "Core wetland stops finished around midday",
+  "privacy": { "synthetic_or_anonymized": true }
+}

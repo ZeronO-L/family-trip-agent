@@ -1,0 +1,30 @@
+[
+  {
+    "schema_version": "0.1.0",
+    "case_id": "case-mountain-no-lunch",
+    "trip_id": "trip-example-global-loop",
+    "title": "No executable lunch on a long mountain scenic road",
+    "priority": "P1",
+    "plan": { "meal": "find a restaurant along the route" },
+    "actual": { "meal": "no acceptable restaurant found until the destination" },
+    "deviation": "The family drove hungry through prolonged mountain roads.",
+    "causes": ["restaurant not verified", "parking and hygiene unacceptable", "fatigue underestimated"],
+    "impacts": ["driver load", "family fatigue", "later attractions lost value"],
+    "candidate_rule_id": "rule-mountain-meal",
+    "privacy": { "synthetic_or_anonymized": true, "public_contribution_allowed": true }
+  },
+  {
+    "schema_version": "0.1.0",
+    "case_id": "case-snack-one-off",
+    "trip_id": "trip-example-global-loop",
+    "title": "One local snack was average",
+    "priority": "P2",
+    "plan": { "meal": "try a famous local snack" },
+    "actual": { "meal": "the snack was average for this family" },
+    "deviation": "Fame did not match this family's taste.",
+    "causes": ["individual taste"],
+    "impacts": ["minor preference update"],
+    "candidate_rule_id": "rule-snack-one-off",
+    "privacy": { "synthetic_or_anonymized": true, "public_contribution_allowed": true }
+  }
+]

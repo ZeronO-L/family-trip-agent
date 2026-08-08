@@ -1,0 +1,18 @@
+{
+  "name": "family-trip-agent-marketplace",
+  "description": "Portable family travel planning skills.",
+  "owner": {
+    "name": "Family Trip Agent Contributors"
+  },
+  "plugins": [
+    {
+      "name": "family-trip-agent",
+      "source": "./",
+      "description": "Plan, replan, validate, and learn from executable family road trips.",
+      "version": "0.1.0-alpha.1",
+      "license": "MIT",
+      "category": "productivity",
+      "tags": ["travel", "family", "road-trip"]
+    }
+  ]
+}

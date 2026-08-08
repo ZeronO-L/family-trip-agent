@@ -1,0 +1,10 @@
+{
+  "case_id": "waypoint-order",
+  "title": "Scenic route verifies and preserves waypoint order",
+  "priority": "P0",
+  "input": { "route": { "scenic_waypoints": ["A", "B", "C"], "waypoint_order_verified": false } },
+  "must_include_actions": ["verify_waypoint_order", "preserve_manual_waypoint_order"],
+  "must_not_include_actions": ["allow_automatic_reordering"],
+  "source_case": "Map POIs existed but were ordered incorrectly",
+  "privacy": { "synthetic_or_anonymized": true }
+}

@@ -1,0 +1,10 @@
+{
+  "case_id": "weak-dining-corridor",
+  "title": "Mountain route gets a verified meal and complete fallback",
+  "priority": "P1",
+  "input": { "route": { "weak_dining_corridor": true }, "meal": { "verified_before_entry": false } },
+  "must_include_actions": ["add_verified_meal_before_entry", "pack_complete_vehicle_meal", "set_lunch_decision_deadline"],
+  "must_not_include_actions": ["rely_on_random_restaurant"],
+  "source_case": "Family drove hungry to destination",
+  "privacy": { "synthetic_or_anonymized": true }
+}

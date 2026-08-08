@@ -1,0 +1,10 @@
+{
+  "case_id": "late-hard-arrival",
+  "title": "Late departure protects a hard arrival time",
+  "priority": "P0",
+  "input": { "departure": { "delay_minutes": 45 }, "hard_constraint": { "latest_arrival": "15:00" } },
+  "must_include_actions": ["recalculate_eta_and_buffer", "remove_nonessential_stops"],
+  "must_not_include_actions": ["keep_all_optional_stops"],
+  "source_case": "Return day gained a service appointment",
+  "privacy": { "synthetic_or_anonymized": true }
+}

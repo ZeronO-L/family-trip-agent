@@ -1,0 +1,23 @@
+{
+  "case_id": "map-route-evidence-completeness",
+  "title": "Road-trip plan cross-checks maps and counts every planned drive",
+  "priority": "P1",
+  "input": {
+    "route_research": {
+      "primary_map_checked": true,
+      "independent_map_checked": false,
+      "all_planned_movements_counted": false,
+      "daily_drive_time_published": true
+    }
+  },
+  "must_include_actions": [
+    "cross_check_route_with_independent_map",
+    "recalculate_complete_daily_drive_time"
+  ],
+  "must_not_include_actions": [
+    "publish_single_source_route_as_verified",
+    "omit_evening_or_return_drives_from_daily_total"
+  ],
+  "source_case": "An anonymized national-park blind run used official segment times but omitted an independent map check and understated a day by excluding an evening round trip.",
+  "privacy": { "synthetic_or_anonymized": true }
+}

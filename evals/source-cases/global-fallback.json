@@ -1,0 +1,16 @@
+{
+  "case_id": "source-global-fallback",
+  "title": "Unknown market keeps global providers and official discovery placeholders",
+  "input": {
+    "country_code": "ZZ",
+    "destination_types": ["mixed"],
+    "needs": ["maps", "reviews", "community", "hotels", "tickets", "weather", "roads"]
+  },
+  "expected_provider_ids": ["google-maps", "openstreetmap", "tripadvisor", "reddit", "booking-com", "expedia", "official-meteorological-service", "open-meteo", "official-road-authority"],
+  "prohibited_provider_ids": ["yelp", "thefork", "nws", "bom", "met-office", "agoda"],
+  "assertions": {
+    "min_providers_per_need": { "maps": 2, "reviews": 2, "community": 3, "hotels": 3, "tickets": 3, "weather": 2, "roads": 2 },
+    "require_official_for": ["community", "hotels", "tickets", "weather", "roads"]
+  },
+  "privacy": { "synthetic_or_anonymized": true }
+}

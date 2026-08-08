@@ -1,0 +1,10 @@
+{
+  "case_id": "heat-rest",
+  "title": "High heat moves outdoor activity and adds rest",
+  "priority": "P1",
+  "input": { "weather": { "temperature_c": 35 }, "schedule": { "midday_outdoor_activity": true } },
+  "must_include_actions": ["add_rest_window", "move_outdoor_after_17"],
+  "must_not_include_actions": ["keep_midday_outdoor_activity"],
+  "source_case": "Repeated high-heat rest pattern",
+  "privacy": { "synthetic_or_anonymized": true }
+}

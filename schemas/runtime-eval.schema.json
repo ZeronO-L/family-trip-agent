@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://family-trip-agent.local/schemas/runtime-eval.schema.json",
+  "title": "Recorded Agent runtime evaluation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "test_id",
+    "tested_at",
+    "host",
+    "execution_context",
+    "clean_runtime_gate_satisfied",
+    "result",
+    "destination",
+    "prompt_ref",
+    "assertions",
+    "sources",
+    "limitations",
+    "privacy"
+  ],
+  "properties": {
+    "test_id": { "type": "string", "minLength": 1 },
+    "tested_at": { "type": "string", "format": "date-time" },
+    "host": { "type": "string", "minLength": 1 },
+    "execution_context": {
+      "enum": ["same_thread_assisted", "independent_fresh_task", "external_host"]
+    },
+    "clean_runtime_gate_satisfied": { "type": "boolean" },
+    "result": { "enum": ["pass", "pass_with_limitations", "fail"] },
+    "destination": { "type": "string", "minLength": 1 },
+    "prompt_ref": { "type": "string", "minLength": 1 },
+    "assertions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "expected", "observed", "verdict"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "expected": { "type": "string", "minLength": 1 },
+          "observed": { "type": "string", "minLength": 1 },
+          "verdict": { "enum": ["pass", "partial", "fail"] }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["provider_id", "role", "url", "access_result", "observed"],
+        "properties": {
+          "provider_id": { "type": "string", "minLength": 1 },
+          "role": { "type": "string", "minLength": 1 },
+          "url": { "type": "string", "minLength": 1 },
+          "access_result": { "enum": ["full", "partial", "blocked", "manual_only"] },
+          "observed": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["synthetic_or_public_destination", "contains_personal_data", "contains_local_paths"],
+      "properties": {
+        "synthetic_or_public_destination": { "const": true },
+        "contains_personal_data": { "const": false },
+        "contains_local_paths": { "const": false }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "case_id": "hotel-parking-card",
+  "title": "Hotel parking requires an executable action card",
+  "priority": "P1",
+  "input": {
+    "parking": {
+      "listed_available": true,
+      "action_card_complete": false,
+      "unknown_components": ["entrance", "luggage_drop", "lobby_path", "fee", "fallback"]
+    }
+  },
+  "must_include_actions": [
+    "require_parking_action_card",
+    "list_parking_unknowns",
+    "add_direct_confirmation_or_arrival_fallback"
+  ],
+  "must_not_include_actions": [
+    "treat_parking_label_as_complete",
+    "hide_unknown_parking_components"
+  ],
+  "source_case": "Underground parking had an unclear lobby path",
+  "privacy": { "synthetic_or_anonymized": true }
+}

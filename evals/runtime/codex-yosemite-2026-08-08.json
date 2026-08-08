@@ -1,0 +1,149 @@
+{
+  "test_id": "runtime-codex-yosemite-2026-08-08",
+  "tested_at": "2026-08-08T08:13:13Z",
+  "host": "Codex desktop",
+  "execution_context": "same_thread_assisted",
+  "clean_runtime_gate_satisfied": false,
+  "result": "pass_with_limitations",
+  "destination": "Yosemite National Park, United States",
+  "prompt_ref": "evals/prompts/yosemite-family-road-trip.md",
+  "assertions": [
+    {
+      "id": "country-source-plan",
+      "expected": "Declare destination-country source routing before making recommendations.",
+      "observed": "The run selected United States providers and separated official, commercial, and community source roles.",
+      "verdict": "pass"
+    },
+    {
+      "id": "independent-map-check",
+      "expected": "Use Google Maps plus an independent map or road source.",
+      "observed": "Google Maps was marked partial and was cross-checked with the National Park Service map, road conditions, and parking guidance.",
+      "verdict": "pass"
+    },
+    {
+      "id": "official-park-rules",
+      "expected": "Use the park authority for closures, parking, and reservation rules.",
+      "observed": "National Park Service traffic, current-conditions, and reservation pages controlled all high-impact park claims.",
+      "verdict": "pass"
+    },
+    {
+      "id": "official-weather-with-fallback",
+      "expected": "Use an official weather authority and do not invent a forecast when retrieval is stale or incomplete.",
+      "observed": "The National Weather Service endpoint was marked partial because the retrievable snapshot was stale or unavailable; the plan kept a dated 72-hour and 24-hour weather recheck gate instead of asserting a current forecast.",
+      "verdict": "pass"
+    },
+    {
+      "id": "negative-review-analysis",
+      "expected": "Use two independent review or discovery sources and classify negative patterns.",
+      "observed": "Tripadvisor and Reddit evidence was separated from the official dining source; recurring concerns were grouped into food quality, value, waiting or service, and parking friction without converting isolated comments into facts.",
+      "verdict": "pass"
+    },
+    {
+      "id": "hotel-platform-and-direct-check",
+      "expected": "Use commercial hotel evidence plus direct-property confirmation or an explicit fallback.",
+      "observed": "Booking.com and Expedia were treated as candidate evidence only. No trustworthy direct-property confirmation was found, so parking and laundry details were marked manual-only and assigned a contact checklist.",
+      "verdict": "pass"
+    },
+    {
+      "id": "access-status-labels",
+      "expected": "Record full, partial, blocked, or manual-only access instead of claiming complete retrieval.",
+      "observed": "Every operational source used by the run received an explicit access result and unsupported details remained unresolved.",
+      "verdict": "pass"
+    },
+    {
+      "id": "parking-and-exit-actions",
+      "expected": "Produce a parking action card plus weather, congestion, and fatigue exit conditions.",
+      "observed": "The plan specified primary and fallback lots, an early-arrival cutoff, no roadside or off-road parking, a park-once rule, and switch-or-exit triggers.",
+      "verdict": "pass"
+    },
+    {
+      "id": "plan-booking-separation",
+      "expected": "Keep planned, selected, booked, and actual facts separate.",
+      "observed": "No hotel, restaurant, ticket, parking space, or tour was described as booked or guaranteed.",
+      "verdict": "pass"
+    }
+  ],
+  "sources": [
+    {
+      "provider_id": "google-maps",
+      "role": "maps",
+      "url": "https://www.google.com/maps/search/Yosemite+Falls+Day+Use+Parking",
+      "access_result": "partial",
+      "observed": "The POI was discoverable, but the interactive route required JavaScript."
+    },
+    {
+      "provider_id": "nps-map-and-roads",
+      "role": "independent_maps_and_roads",
+      "url": "https://www.nps.gov/yose/planyourvisit/traffic.htm",
+      "access_result": "full",
+      "observed": "Official parking locations, congestion behavior, no-roadside-parking rule, and park-once guidance were retrievable."
+    },
+    {
+      "provider_id": "tripadvisor",
+      "role": "reviews",
+      "url": "https://www.tripadvisor.com/Hotel_Review-g61000-d119523-Reviews-Yosemite_Valley_Lodge-Yosemite_National_Park_California.html",
+      "access_result": "partial",
+      "observed": "Recent review discovery supported recurring category analysis but not a complete review corpus."
+    },
+    {
+      "provider_id": "reddit",
+      "role": "community_discovery",
+      "url": "https://www.reddit.com/r/Yosemite/",
+      "access_result": "partial",
+      "observed": "Community reports provided a second perspective on queues, dining, and parking; they were not used for official rules."
+    },
+    {
+      "provider_id": "booking-com",
+      "role": "hotels",
+      "url": "https://www.booking.com/hotel/us/yosemite-view-lodge.en-gb.html",
+      "access_result": "partial",
+      "observed": "Candidate location and room features were discoverable; date-specific inventory and property operations were not confirmed."
+    },
+    {
+      "provider_id": "expedia",
+      "role": "hotels",
+      "url": "https://www.expedia.com/El-Portal-Hotels-Yosemite-View-Lodge.h576660.Hotel-Information",
+      "access_result": "partial",
+      "observed": "Parking and laundry claims were visible as commercial listing evidence only."
+    },
+    {
+      "provider_id": "regional-tourism-directory",
+      "role": "hotel_direct_fallback",
+      "url": "https://www.yosemite.com/places-to-stay/hotels-and-motels/yosemite-view-lodge/",
+      "access_result": "manual_only",
+      "observed": "The regional tourism directory supported candidate discovery but did not provide direct-property confirmation; the property must be contacted before selection."
+    },
+    {
+      "provider_id": "nws",
+      "role": "weather",
+      "url": "https://forecast.weather.gov/MapClick.php?lat=37.74600&lon=-119.6146",
+      "access_result": "partial",
+      "observed": "The official endpoint was identified, but the retrieved content was stale or unavailable and was not used as a current forecast."
+    },
+    {
+      "provider_id": "nps",
+      "role": "official_attraction",
+      "url": "https://www.nps.gov/yose/planyourvisit/conditions.htm",
+      "access_result": "full",
+      "observed": "Road, seasonal, fire, smoke, camping, and trail conditions were retrievable from the official authority."
+    },
+    {
+      "provider_id": "travel-yosemite",
+      "role": "official_concessioner_dining",
+      "url": "https://www.travelyosemite.com/dining/yosemite-valley-lodge/",
+      "access_result": "full",
+      "observed": "Official concessioner dining options were discoverable, subject to a date-specific recheck."
+    }
+  ],
+  "limitations": [
+    "The run occurred in the same development task that installed and edited the Skill, so it is not an independent fresh-task host verification.",
+    "Exact travel dates, origin, selected hotel, budget, mobility needs, and desired hiking intensity were not supplied.",
+    "No booking, payment, live navigation, phone call, mobile-app workflow, or completed trip was executed.",
+    "The result supports a United States desk-verified itinerary case only; it does not upgrade Codex to clean runtime-verified status."
+  ],
+  "privacy": {
+    "synthetic_or_public_destination": true,
+    "contains_personal_data": false,
+    "contains_local_paths": false
+  }
+}

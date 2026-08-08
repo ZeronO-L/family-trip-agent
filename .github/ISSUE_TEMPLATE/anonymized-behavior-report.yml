@@ -1,0 +1,69 @@
+name: Anonymized behavior report
+description: Report a planning or replanning behavior without sharing a live itinerary or personal data.
+title: "[Behavior] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve Family Trip Agent. Describe only the reusable decision pattern. Do not include names, booking references, exact home addresses, active travel dates, live locations, vehicle details, screenshots with metadata, or children's identifying information.
+
+  - type: dropdown
+    id: evidence_scope
+    attributes:
+      label: Evidence scope
+      description: Choose the least sensitive category that accurately describes the report.
+      options:
+        - Synthetic scenario
+        - Desk-tested itinerary
+        - Completed trip with anonymized details
+    validations:
+      required: true
+
+  - type: input
+    id: broad_region
+    attributes:
+      label: Broad destination region
+      description: Optional. Use a country or broad region only; do not provide a precise route.
+      placeholder: "Example: United States national parks"
+
+  - type: textarea
+    id: scenario
+    attributes:
+      label: Anonymized scenario
+      description: Describe the family constraints and decision trigger using generalized places, dates, and costs.
+      placeholder: A single-driver family plan lost a booked attraction and needed a lower-commute replacement.
+    validations:
+      required: true
+
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed Agent behavior
+      description: What did the Agent do?
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected reusable behavior
+      description: Describe the action or safety boundary that should become a regression case.
+    validations:
+      required: true
+
+  - type: textarea
+    id: source_limits
+    attributes:
+      label: Source access or verification limits
+      description: Optional. Note only source roles and access results such as full, partial, blocked, or manual-only.
+      placeholder: The official road source was full; the hotel inventory source required manual confirmation.
+
+  - type: checkboxes
+    id: privacy_confirmation
+    attributes:
+      label: Privacy confirmation
+      options:
+        - label: I removed personal data, exact active-trip details, booking references, and local file paths.
+          required: true
+        - label: I understand that this issue and its contents will be public.
+          required: true

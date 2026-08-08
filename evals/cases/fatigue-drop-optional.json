@@ -1,0 +1,10 @@
+{
+  "case_id": "fatigue-drop-optional",
+  "title": "High fatigue drops optional activities",
+  "priority": "P1",
+  "input": { "family_state": { "fatigue": "high" } },
+  "must_include_actions": ["drop_optional_activities", "choose_nearby_meal_and_rest"],
+  "must_not_include_actions": ["complete_every_attraction"],
+  "source_case": "Later stops lost value after prolonged driving",
+  "privacy": { "synthetic_or_anonymized": true }
+}

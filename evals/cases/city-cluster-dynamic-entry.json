@@ -1,0 +1,27 @@
+{
+  "case_id": "city-cluster-dynamic-entry",
+  "title": "City itinerary clusters stops and rechecks dynamic entry claims",
+  "priority": "P1",
+  "input": {
+    "city_plan": {
+      "spatial_clusters_verified": false,
+      "outlier_stops_present": true,
+      "dynamic_entry_claims_present": true,
+      "official_entry_sources_verified": false,
+      "weather_dependent_day_trip": true,
+      "weather_decision_gate_present": false
+    }
+  },
+  "must_include_actions": [
+    "cluster_city_stops_by_area",
+    "move_outlier_stops_to_nearest_cluster_day",
+    "verify_dynamic_entry_rules_with_official_sources",
+    "add_weather_decision_gate"
+  ],
+  "must_not_include_actions": [
+    "treat_community_booking_claim_as_current",
+    "keep_weather_dependent_day_without_exit_condition"
+  ],
+  "source_case": "An anonymized city itinerary mixed distant shopping stops, time-sensitive entry advice, and a weather-dependent coastal day without a decision gate.",
+  "privacy": { "synthetic_or_anonymized": true }
+}

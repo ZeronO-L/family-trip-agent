@@ -1,0 +1,120 @@
+{
+  "test_id": "runtime-codex-yellowstone-blind-2026-08-08",
+  "tested_at": "2026-08-08T08:25:55Z",
+  "host": "Codex desktop",
+  "execution_context": "independent_fresh_task",
+  "clean_runtime_gate_satisfied": false,
+  "result": "fail",
+  "destination": "Yellowstone National Park, United States",
+  "prompt_ref": "evals/prompts/yellowstone-family-road-trip.md",
+  "assertions": [
+    {
+      "id": "automatic-skill-routing",
+      "expected": "Trigger the family road-trip workflow from a normal travel request without development context.",
+      "observed": "The fresh task identified the family road-trip workflow and separated planning from booking.",
+      "verdict": "pass"
+    },
+    {
+      "id": "assumption-management",
+      "expected": "Expose missing dates, entry point, child age, and onward-travel assumptions.",
+      "observed": "The plan declared a summer west-entrance scenario and requested the missing details before date-specific verification.",
+      "verdict": "pass"
+    },
+    {
+      "id": "route-alternative-comparison",
+      "expected": "Compare materially different route or lodging shapes before selecting one.",
+      "observed": "The plan explained why three nights outside the west entrance would burden the only driver, but did not provide a complete route-direction or lodging-shape comparison.",
+      "verdict": "partial"
+    },
+    {
+      "id": "independent-map-cross-check",
+      "expected": "Cross-check the route with independent map roles.",
+      "observed": "Official segment times were cited, but no primary-plus-independent map verification was delivered.",
+      "verdict": "fail"
+    },
+    {
+      "id": "complete-daily-drive-total",
+      "expected": "Count every planned vehicle movement in each daily driving total.",
+      "observed": "The third-day total did not clearly include the evening out-and-back drive between the lodging area and the thermal-basin stop.",
+      "verdict": "fail"
+    },
+    {
+      "id": "official-operational-authorities",
+      "expected": "Use official authorities for park, road, weather, fee, reservation, lodging, and dining rules.",
+      "observed": "National Park Service and the authorized lodging concessioner controlled the relevant operational claims.",
+      "verdict": "pass"
+    },
+    {
+      "id": "negative-review-analysis",
+      "expected": "Use two independent review or discovery sources and classify negative patterns for important meals.",
+      "observed": "Only official restaurant pages were used; no independent review patterns or quality limitations were delivered.",
+      "verdict": "fail"
+    },
+    {
+      "id": "source-access-contract",
+      "expected": "Expose retrieval time, source role, access result, fallback, and unresolved facts.",
+      "observed": "Links were cited, but the output did not label full, partial, blocked, or manual-only access and did not provide a per-source fallback table.",
+      "verdict": "fail"
+    },
+    {
+      "id": "parking-action-card",
+      "expected": "Provide executable parking cards for selected lodging and congested attractions.",
+      "observed": "Attraction congestion exits were useful, but hotel entrance, unloading, lobby path, fee or height, unknowns, and confirmation fallback were incomplete.",
+      "verdict": "partial"
+    },
+    {
+      "id": "plan-booking-separation",
+      "expected": "Keep recommendations separate from confirmed bookings and guarantees.",
+      "observed": "The output made no booking and kept date-specific availability unresolved.",
+      "verdict": "pass"
+    }
+  ],
+  "sources": [
+    {
+      "provider_id": "nps",
+      "role": "official_route_and_roads",
+      "url": "https://www.nps.gov/yell/planyourvisit/directions.htm",
+      "access_result": "full",
+      "observed": "Official segment times and driving caveats were used, but the delivered plan did not add an independent map role."
+    },
+    {
+      "provider_id": "nps",
+      "role": "official_fees_and_entry",
+      "url": "https://www.nps.gov/yell/planyourvisit/fees.htm",
+      "access_result": "full",
+      "observed": "Vehicle entry and nonresident fee rules were current and correctly conditioned on age and residency assumptions."
+    },
+    {
+      "provider_id": "yellowstone-national-park-lodges",
+      "role": "direct_lodging_inventory",
+      "url": "https://www.yellowstonenationalparklodges.com/stay/plan/reservations/",
+      "access_result": "full",
+      "observed": "The direct operator supported reservation-window and cancellation-policy claims."
+    },
+    {
+      "provider_id": "yellowstone-national-park-lodges",
+      "role": "official_concessioner_dining",
+      "url": "https://www.yellowstonenationalparklodges.com/restaurant/canyon-lodge-eatery/",
+      "access_result": "full",
+      "observed": "The direct restaurant page supported hours and service style, but no independent quality evidence was added."
+    },
+    {
+      "provider_id": "nps",
+      "role": "official_weather_gateway",
+      "url": "https://www.nps.gov/yell/planyourvisit/weather.htm",
+      "access_result": "full",
+      "observed": "Seasonal weather limits and recheck timing were handled appropriately because exact dates were absent."
+    }
+  ],
+  "limitations": [
+    "The raw localized answer is not stored in the public repository; this record preserves only anonymized behavior assertions.",
+    "Exact travel dates, entry and exit logistics, child age, and booked lodging were not supplied.",
+    "The run proves automatic workflow routing and several official-source behaviors, but it failed the complete runtime gate.",
+    "The identified failures were converted into deterministic regression cases before the Skill was revised."
+  ],
+  "privacy": {
+    "synthetic_or_public_destination": true,
+    "contains_personal_data": false,
+    "contains_local_paths": false
+  }
+}

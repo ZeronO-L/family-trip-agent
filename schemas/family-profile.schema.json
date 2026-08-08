@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://family-trip-agent.local/schemas/family-profile.schema.json",
+  "title": "Family profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "record_id", "household_label", "members", "preferences", "rules"],
+  "properties": {
+    "schema_version": { "const": "0.1.0" },
+    "record_id": { "type": "string", "minLength": 1 },
+    "household_label": { "type": "string", "minLength": 1 },
+    "members": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["member_id", "role", "age_group"],
+        "properties": {
+          "member_id": { "type": "string" },
+          "role": { "type": "string" },
+          "age_group": { "enum": ["infant", "child", "teen", "adult", "senior"] },
+          "drives": { "type": "boolean" },
+          "needs": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "preferences": {
+      "type": "object",
+      "required": ["lodging", "meals", "mobility", "driving"],
+      "properties": {
+        "lodging": { "type": "object" },
+        "meals": { "type": "object" },
+        "mobility": { "type": "object" },
+        "driving": { "type": "object" }
+      }
+    },
+    "rules": { "type": "array", "items": { "type": "string" } },
+    "version": { "type": "integer", "minimum": 1 },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "updated_by": { "type": "string" }
+  }
+}

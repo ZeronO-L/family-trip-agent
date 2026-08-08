@@ -1,0 +1,4 @@
+interface:
+  display_name: "Family Trip Agent"
+  short_description: "Plan and replan executable family road trips"
+  default_prompt: "Use $manage-family-road-trip to plan an executable family road trip, validate risks, and preserve plan-versus-actual feedback."

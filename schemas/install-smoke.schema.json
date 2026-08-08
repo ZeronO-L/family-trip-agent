@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://family-trip-agent.local/schemas/install-smoke.schema.json",
+  "title": "Host installation smoke test",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["test_id", "tested_at", "installer", "source_mode", "isolation", "hosts", "privacy"],
+  "properties": {
+    "test_id": { "type": "string", "minLength": 1 },
+    "tested_at": { "type": "string", "format": "date-time" },
+    "installer": { "type": "string" },
+    "source_mode": { "type": "string" },
+    "isolation": { "type": "string" },
+    "hosts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["host", "agent_flag", "destination_class", "installed", "runtime_executed"],
+        "properties": {
+          "host": { "type": "string" },
+          "agent_flag": { "type": "string" },
+          "destination_class": { "type": "string" },
+          "installed": { "const": true },
+          "runtime_executed": { "type": "boolean" }
+        }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "required": ["contains_local_paths", "contains_personal_data"],
+      "properties": {
+        "contains_local_paths": { "const": false },
+        "contains_personal_data": { "const": false }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "case_id": "consecutive-reservations-room-continuity",
+  "title": "Separate consecutive reservations require room-continuity confirmation",
+  "priority": "P1",
+  "input": {
+    "accommodation": {
+      "same_property_consecutive_nights": true,
+      "separate_reservations": true,
+      "same_room_type": true,
+      "reservation_linked": false,
+      "same_room_confirmed": false
+    }
+  },
+  "must_include_actions": [
+    "request_reservation_linking",
+    "confirm_same_room_or_room_move",
+    "keep_room_continuity_unresolved"
+  ],
+  "must_not_include_actions": [
+    "assume_same_room_from_room_type",
+    "assume_checkout_not_required"
+  ],
+  "source_case": "An anonymized blind run selected two consecutive nights at one property under separate cancellable reservations with the same room category.",
+  "privacy": { "synthetic_or_anonymized": true }
+}

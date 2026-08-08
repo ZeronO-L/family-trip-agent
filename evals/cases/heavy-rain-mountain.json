@@ -1,0 +1,10 @@
+{
+  "case_id": "heavy-rain-mountain",
+  "title": "Heavy rain cancels mountain scenic driving",
+  "priority": "P0",
+  "input": { "weather": { "heavy_rain": true }, "route": { "mountain_or_riverside": true } },
+  "must_include_actions": ["cancel_scenic_route", "use_fastest_safe_route", "verify_official_weather_and_road_alerts"],
+  "must_not_include_actions": ["continue_scenic_route"],
+  "source_case": "Route-level rain risk",
+  "privacy": { "synthetic_or_anonymized": true }
+}

@@ -1,0 +1,10 @@
+{
+  "case_id": "venue-closed",
+  "title": "Reported-open restaurant is closed on arrival",
+  "priority": "P0",
+  "input": { "venue": { "reported_open": true, "observed_status": "closed" } },
+  "must_include_actions": ["switch_to_ranked_backup", "record_source_conflict"],
+  "must_not_include_actions": ["continue_to_closed_venue"],
+  "source_case": "Platform status conflicted with an on-site observation",
+  "privacy": { "synthetic_or_anonymized": true }
+}

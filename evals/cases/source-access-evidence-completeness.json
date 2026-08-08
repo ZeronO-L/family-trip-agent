@@ -1,0 +1,24 @@
+{
+  "case_id": "source-access-evidence-completeness",
+  "title": "Planning output records source access, time, and fallback state",
+  "priority": "P1",
+  "input": {
+    "source_evidence": {
+      "sources_used": true,
+      "access_results_recorded": false,
+      "retrieval_times_recorded": false,
+      "fallbacks_or_unresolved_facts_recorded": false
+    }
+  },
+  "must_include_actions": [
+    "record_source_access_results",
+    "record_retrieval_times",
+    "record_fallbacks_and_unresolved_facts"
+  ],
+  "must_not_include_actions": [
+    "present_unlabeled_source_links_as_full_verification",
+    "hide_unresolved_operational_facts"
+  ],
+  "source_case": "An anonymized blind run linked useful sources but did not reveal whether retrieval was full, partial, blocked, or manual-only.",
+  "privacy": { "synthetic_or_anonymized": true }
+}
